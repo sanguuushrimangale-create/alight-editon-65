@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Alight_editon_65 | Video Editing</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Animated background */
+body::before{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:#00e5ff;
+    filter:blur(180px);
+    opacity:.12;
+    top:-150px;
+    left:-100px;
+    animation:moveGlow 7s infinite alternate;
+    z-index:-1;
+}
+
+@keyframes moveGlow{
+    from{
+        transform:translate(0,0);
+    }
+    to{
+        transform:translate(70vw,70vh);
+    }
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(5,5,5,.75);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #222;
+    z-index:1000;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#00e5ff;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:15px;
+    font-size:13px;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:100px 20px 60px;
+    background:
+    radial-gradient(circle at center,#09252b 0%,#050505 50%);
+}
+
+.hero-content{
+    animation:heroIn 1.2s ease;
+}
+
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.small-title{
+    color:#00e5ff;
+    letter-spacing:4px;
+    font-size:13px;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,10vw,85px);
+    line-height:.95;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:#00e5ff;
+    text-shadow:0 0 30px rgba(0,229,255,.5);
+}
+
+.hero p{
+    max-width:650px;
+    margin:auto;
+    color:#aaa;
+    font-size:17px;
+    line-height:1.7;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:15px 30px;
+    border-radius:40px;
+    background:#00e5ff;
+    color:#001014;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 0 25px rgba(0,229,255,.3);
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 45px rgba(0,229,255,.7);
+}
+
+/* SECTIONS */
+
+section{
+    padding:90px 7%;
+}
+
+.title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:45px;
+}
+
+.title span{
+    color:#00e5ff;
+}
+
+/* VIDEO SHOWCASE */
+
+.video-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+}
+
+.video-card{
+    background:#0d0d0d;
+    border:1px solid #242424;
+    border-radius:20px;
+    padding:12px;
+    overflow:hidden;
+    transition:.4s;
+}
+
+.video-card:hover{
+    transform:translateY(-10px) scale(1.02);
+    border-color:#00e5ff;
+    box-shadow:0 15px 45px rgba(0,229,255,.15);
+}
+
+.video-card video{
+    width:100%;
+    height:360px;
+    object-fit:cover;
+    border-radius:14px;
+    display:block;
+    background:#000;
+}
+
+.video-card h3{
+    padding:15px 5px 5px;
+    font-size:20px;
+}
+
+.video-card p{
+    padding:0 5px 10px;
+    color:#777;
+}
+
+/* SERVICES */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(145deg,#121212,#080808);
+    border:1px solid #242424;
+    border-radius:20px;
+    padding:30px 22px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#00e5ff;
+    box-shadow:0 10px 35px rgba(0,229,255,.12);
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:21px;
+}
+
+.card p{
+    color:#999;
+    line-height:1.6;
+}
+
+/* PRICING */
+
+.price{
+    color:#00e5ff;
+    font-size:30px;
+    font-weight:bold;
+    margin:15px 0;
+}
+
+/* CONTACT */
+
+.contact{
+    text-align:center;
+    background:linear-gradient(180deg,#050505,#07191c);
+}
+
+.contact p{
+    max-width:600px;
+    margin:auto;
+    color:#aaa;
+    line-height:1.7;
+}
+
+.social{
+    margin-top:25px;
+}
+
+.social a{
+    color:#00e5ff;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:25px;
+    border-top:1px solid #222;
+    color:#666;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    nav{
+        padding:15px 5%;
+    }
+
+    nav a{
+        margin-left:7px;
+        font-size:11px;
+    }
+
+    section{
+        padding:70px 5%;
+    }
+
+    .hero h1{
+        font-size:48px;
+    }
+
+    .video-card video{
+        height:430px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+    <div class="logo">
+        Alight_<span>editon_65</span>
+    </div>
+
+    <div>
+        <a href="#videos">Edits</a>
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            PREMIUM VIDEO EDITING
+        </div>
+
+        <h1>
+            TURN YOUR<br>
+            <span>CLIPS INTO FIRE.</span>
+        </h1>
+
+        <p>
+            Professional video editing for Reels, Shorts,
+            Gaming videos, Status edits and more.
+            Premium edits at affordable prices.
+        </p>
+
+        <a class="btn" href="#contact">
+            ORDER YOUR EDIT
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- VIDEO SHOWCASE -->
+
+<section id="videos">
+
+    <h2 class="title">
+        MY <span>BEST EDITS</span>
+    </h2>
+
+    <div class="video-grid">
+
+        <!-- VIDEO 1 -->
+
+        <div class="video-card">
+
+            <video controls playsinline>
+                <source src="videos/edit1.mp4" type="video/mp4">
+            </video>
+
+            <h3>🔥 Gaming Edit</h3>
+
+            <p>
+                High-energy gaming montage.
+            </p>
+
+        </div>
+
+
+        <!-- VIDEO 2 -->
+
+        <div class="video-card">
+
+            <video controls playsinline>
+                <source src="videos/edit2.mp4" type="video/mp4">
+            </video>
+
+            <h3>⚡ Reel Edit</h3>
+
+            <p>
+                Beat sync + cinematic effects.
+            </p>
+
+        </div>
+
+
+        <!-- VIDEO 3 -->
+
+        <div class="video-card">
+
+            <video controls playsinline>
+                <source src="videos/edit3.mp4" type="video/mp4">
+            </video>
+
+            <h3>🎬 Cinematic Edit</h3>
+
+            <p>
+                Smooth cinematic editing.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+    <h2 class="title">
+        MY <span>SERVICES</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>🎮 Gaming Edits</h3>
+
+            <p>
+                Best shots, beat sync, transitions,
+                effects and cinematic gameplay editing.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>📱 Reels & Shorts</h3>
+
+            <p>
+                Engaging short-form edits designed
+                to grab attention.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🔥 Status Videos</h3>
+
+            <p>
+                Stylish WhatsApp and Instagram
+                status edits.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>🎥 Cinematic Editing</h3>
+
+            <p>
+                Professional cinematic effects,
+                color grading and transitions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PRICING -->
+
+<section id="pricing">
+
+    <h2 class="title">
+        SIMPLE <span>PRICING</span>
+    </h2>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <h3>Basic Edit</h3>
+
+            <div class="price">
+                ₹99+
+            </div>
+
+            <p>
+                Basic cuts, music sync and effects.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Premium Edit</h3>
+
+            <div class="price">
+                ₹199+
+            </div>
+
+            <p>
+                Advanced transitions, effects,
+                captions and beat sync.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <h3>Pro Edit</h3>
+
+            <div class="price">
+                ₹399+
+            </div>
+
+            <p>
+                Full cinematic professional editing.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <h2 class="title">
+        LET'S <span>CREATE.</span>
+    </h2>
+
+    <p>
+        Have some clips that need a crazy edit?
+        Send your clips and tell me what you want.
+        I'll turn them into something special.
+    </p>
+
+
+    <!-- CHANGE NUMBER HERE -->
+
+    <a
+        class="btn"
+        href="https://wa.me/7411812305"
+        target="_blank">
+
+        📱 ORDER ON WHATSAPP
+
+    </a>
+
+
+    <div class="social">
+
+        <!-- CHANGE INSTAGRAM LINK -->
+
+        <a href="#" target="_blank">
+            Instagram
+        </a>
+
+        <!-- CHANGE YOUTUBE LINK -->
+
+        <a href="#" target="_blank">
+            YouTube
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © 2026 Alight_editon_65
+    <br>
+    Premium Video Editing
+
+</footer>
+
+
+</body>
+</html>
